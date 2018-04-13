@@ -12,6 +12,8 @@ int saida=0;
 int contI=0;
 int contadorN=0;
 int entGeral;
+int saidaI=0;
+int saidaN=0;
 
 struct pessoa{
 	char nome[20];
@@ -88,6 +90,7 @@ int main(){
     
     if(opt==4){
     	system("pause");
+    	break;
 	}
 
 
@@ -200,40 +203,52 @@ void show(){
 
 
 void remove(){
-	int saidaI=0;//saida idoso
-	int saidaN=0;//saida normal
+	
+	if(contI == 0){
+		saidaI =0;
+	}
+	
+	if(contadorN==0){
+		saidaN=0;
+	}
+	
+	
 	
 	if(contI!=0){
-		if(saidaI==MAX && contI>0){
-			saidaI=0;
+		if(saidaI==MAX){
+			saidaI=0 ;
+			printf("Idoso removido: %s \n\n",idoso[saidaI].nome);
 			idoso[saidaI].idade= 0;
 			strcpy(idoso[saidaI].nome,0);
 			saidaI++;
+		//	saida++;
 			contI--;
-			contador--;
-			
+			contador--;	
 		}else if(saidaI<MAX){
+			printf("Idoso removido: %s\n\n",idoso[saidaI].nome);
 			idoso[saidaI].idade= 0;
-			strcpy(idoso[saidaI].nome,"\0");
-			//idoso[saidaI].nome= NULL;	
+			strcpy(idoso[saidaI].nome,"\0");			
+		//	saida++;
 			saidaI++;
 			contI--;
 			contador--;
 		}
 		
 	}else if (contadorN!=0){
-		if(saidaN==MAX && contador>0){
+		if(saida==MAX){
 			saidaN=0;
+			printf("Pessoa removida: %s\n\n",p[saidaN].nome);
 			p[saidaN].idade= 0;
 			strcpy(p[saidaN].nome,"\0");
-			//p[saidaI].nome= NULL;
 			saidaN++;
+			//saida++;
 			contadorN--;
 			contador--;
 		}else if(saidaN<MAX){
+			printf("Pessoa removida: %s\n\n",p[saidaN].nome);
 			p[saidaN].idade= 0;
 			strcpy(p[saidaN].nome,"\0");
-	//		p[saidaN].nome= NULL;	
+		//	saida++;
 			saidaN++;
 			contadorN--;
 			contador--;
@@ -242,7 +257,51 @@ void remove(){
 		
 	}
 	
-
+	
+	
+/*	
+	if(saida==MAX && contador>0){
+		saida =0;
+		if(contI!=0){
+		
+			printf("Idoso removido: %s \n\n",idoso[saida].nome);
+			idoso[saida].idade= 0;
+			strcpy(idoso[saida].nome,0);
+			saida++;
+			contI--;
+			contador--;	
+		}else if(contadorN!=0){
+			printf("Pessoa removida: %s\n\n",p[saida].nome);
+			p[saida].idade= 0;
+			strcpy(p[saida].nome,"\0");
+			saida++;
+			contadorN--;
+			contador--;
+			
+		}
+	}else if(saida<MAX){
+		
+		if(contI!=0) {
+		
+			printf("Idoso removido: %s\n\n",idoso[saida].nome);
+			idoso[saida].idade= 0;
+			strcpy(idoso[saida].nome,"\0");
+			//idoso[saidaI].nome= NULL;	
+			saida++;
+			contI--;
+			contador--;
+		}else if (contadorN!=0){
+			printf("Pessoa removida: %s\n\n",p[saida].nome);
+			p[saida].idade= 0;
+			strcpy(p[saida].nome,"\0");
+			saida++;
+			contadorN--;
+			contador--;
+			
+		}
+	}
+	
+*/
 	
 	main();
 	

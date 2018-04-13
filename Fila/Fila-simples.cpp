@@ -13,18 +13,6 @@ int contador=0;
 
 
 
-/*	int verifica() {
-	
-	for(final =0; final<entrada;final++){
-		if(fila[final]== NULL ){
-			
-			*pos= fila[final];
-			 ent = *pos;
-			 
-			
-		}
-	}
-}*/
 
 
 
