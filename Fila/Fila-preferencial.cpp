@@ -25,7 +25,7 @@ struct pessoa idoso[MAX];
 void insert();
 void show();
 void remove();
-
+///
 
 
 
