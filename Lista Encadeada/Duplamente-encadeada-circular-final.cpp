@@ -170,6 +170,7 @@ void remover(struct lista **list, int val){
 	else{
 		
 		printf("\nValor a Ser Removido: ");
+		listar(finalera);
 		scanf("%i",&val);
 		aux2 = buscar(*list, val);
 		
