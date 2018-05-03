@@ -1,8 +1,8 @@
 # Leia-me
 
-Exercícios de exemplo para a matéria de Estrutura de Dados I
-Professor: Wagner Mariani
-Aluno: André Robert
+* Exercícios de exemplo para a matéria de Estrutura de Dados I
+* Professor: Wagner Mariani
+* Aluno: André Robert
 
 ## Exemplo de pilha
 
@@ -26,6 +26,7 @@ Aluno: André Robert
 * Remover;
 * Próximo elemento;
 * Elemento anterior;
-* Listar
+* Listar;
+* Pesquisar elemento
 
 ## Exemplo de Árvore B
