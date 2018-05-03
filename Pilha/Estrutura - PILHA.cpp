@@ -75,6 +75,7 @@ void pop(){
 
 void exibir(){
 	int j;
+	printf("Valores empilhados\n");
 	for(j=0;j<ponto;j++){
 		if (ponto == 0){
 			printf("Pilha vazia!");
