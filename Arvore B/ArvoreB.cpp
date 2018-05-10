@@ -3,6 +3,7 @@
 #include <String.h>
 #include <locale.h>
 
+int exec=0;
 
 typedef struct ar{
 	struct ar *pp;
@@ -11,14 +12,15 @@ typedef struct ar{
 	int valor;
 }b;
 
+
+
 void inicia(b ** bb){//inicializar a lista, definindo valores nulos
 	*bb= NULL;
 }
 
-int insere(){
-	int val;
+int insere(b **bb,int val){
 	printf("Digite o valor a ser inserido");
-	scanf("%i",&val);
+	scanf("%i",val);
 	
 	
 	
@@ -33,8 +35,14 @@ void listar(){
 	
 }
 
+void impressaoTXT(){
+	
+}
+
 int main(){
 	setlocale(LC_ALL,"Portuguese");
+	
+	b *raiz;
 	b *bb;
 	int op;
 	int val;
@@ -44,9 +52,14 @@ int main(){
 	for(;;){
 		printf("\n1 - Inserir\n2 - Remover\n3 - Exibir\n4 - Anterior\n5 - Próximo\n6 - Cima\n7 - Sair\n\nOpção:");
 		scanf("%i",&op);
-		printf("Valor atual:%i");
+		printf("Valor atual:%i",val);
 		if(op==1){
-			insere();
+			if(exec==0){
+				insere(&raiz,val);
+			}else{
+				insere(&bb,val);
+			}
+			
 		}
 		
 		if(op==2){
