@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <String.h>
 #include <locale.h>
 
 typedef struct lista{
@@ -10,13 +9,13 @@ typedef struct lista{
 }list;
 
 int main();
-int exec=0;
+int exec=0;// contador para números de execuções
 
-void inicia(list ** lis){//ok
+void inicia(list ** lis){//inicializar a lista, definindo valores nulos
 	*lis= NULL;
 }
 
-void listar(list **lis){//??
+void listar(list **lis){
 	if(exec==0){
 		printf("Lista vazia, insira alguns valores\n");
 		system("pause");
@@ -103,19 +102,19 @@ int main(){
 		
 		
 		if(op==1){
-			if(exec==0){
+			if(exec==0){// primeixa execução, onde será definido o proximo e o anterior como o mesmo valor digitado
 				printf("Digite o valor a ser inserido:");
 				scanf("%i",&val);
 				insereP(&lis,val);
 			}else{
-				printf("Digite o valor a ser inserido:");
+				printf("Digite o valor a ser inserido:"); // da segunda inserção adiante, onde será definido o ponteiro para a  próxima e posição anterior
 				scanf("%i",&val);
 				insere(&lis,val);
 			}
 		}
 		
 		if(op==2){
-			remove(&lis);			
+			remove(&lis);// remove o valor atual da lista			
 		}
 		
 		if(op==3){
@@ -124,13 +123,13 @@ int main(){
 		
 		if(op==4){
 			lis = lis->pp; 
-			printf("Valor:%i\n",lis->valor); 
+			printf("Valor:%i\n",lis->valor); // Lista o proximo valor da lista
 			system("pause");	
 		}
 		
 		if(op==5){
 			lis = lis->aa; 
-			printf("Valor:%i\n",lis->valor); 
+			printf("Valor:%i\n",lis->valor); // Lista o valor anterior da lista
 			system("pause");
 		
 		}
