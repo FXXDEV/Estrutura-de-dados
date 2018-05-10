@@ -9,7 +9,7 @@ typedef struct lista{
 }list;
 
 int main();
-int exec=0;// contador para números de execuções
+int exec=0;
 
 void inicia(list ** lis){//inicializar a lista, definindo valores nulos
 	*lis= NULL;
@@ -24,8 +24,7 @@ void listar(list **lis){
 		printf("Lista dos números inseridos\n");
 		list *aux =*lis;
 	
-	
-	for(int y=0;y<exec;y++){
+	for(int i=0;i<exec;i++){
 			printf("Valor:%i\n",aux->valor);
 			aux = aux->pp;
 		}
@@ -34,31 +33,30 @@ void listar(list **lis){
 
 }
 
-int insereP(list **lis,int val){
-	
-	lista *aux = (lista *)malloc(sizeof(lista));
-	aux->valor = val;
-	aux->aa = aux;
-	aux->pp= aux;	
-	*lis = aux;
-	exec++;
-	printf("\nValor %i inserido com sucesso!\n\n",val);
-	system("pause");	
-
-}
 
 int insere(list **lis,int val){
+	if(exec==0){
+		lista *aux = (lista *)malloc(sizeof(lista));
+		aux->valor = val;
+		aux->aa = aux;
+		aux->pp= aux;	
+		*lis = aux;
+		exec++;
+		printf("\nValor %i inserido com sucesso!\n\n",val);
+		system("pause");	
+	}else{
+		lista *aux = (lista *)malloc(sizeof(lista));
+		aux->valor = val;
+		aux->pp = (*lis)->pp;
+		aux->aa = *lis;
+		(*lis)->pp = aux;
+		aux->pp->aa = aux;
+		*lis = aux;
+		printf("\nValor %i inserido com sucesso!\n\n",val);
+		exec++;
+		system("pause");
 	
-	lista *aux = (lista *)malloc(sizeof(lista));
-	aux->valor = val;
-	aux->pp = (*lis)->pp;
-	aux->aa = *lis;
-	(*lis)->pp = aux;
-	aux->pp->aa = aux;
-	*lis = aux;
-	printf("\nValor %i inserido com sucesso!\n\n",val);
-	exec++;
-	system("pause");
+	}
 }
 
 void remove(list **lis){
@@ -67,17 +65,15 @@ void remove(list **lis){
 		printf("A lista esta nula, por favor insira alguns valores!\n");
 				
 		}else{
-
-		(*lis)->pp->aa = (*lis)->aa;
-		(*lis)->aa->pp = (*lis)->pp;
-		rev = (*lis)->pp;
-		printf("Valor removido:%i\n",rev->valor);
-		free(*lis);
-		*lis = rev;
-		exec--;
-	}
-	system("pause");
-	
+			(*lis)->pp->aa = (*lis)->aa;
+			(*lis)->aa->pp = (*lis)->pp;
+			rev = (*lis)->pp;
+			printf("Valor atual:%i\n",rev->valor);
+			free(*lis);
+			*lis = rev;
+		
+		}
+		system("pause");	
 }
 
 int main(){
@@ -102,15 +98,9 @@ int main(){
 		
 		
 		if(op==1){
-			if(exec==0){// primeixa execução, onde será definido o proximo e o anterior como o mesmo valor digitado
-				printf("Digite o valor a ser inserido:");
-				scanf("%i",&val);
-				insereP(&lis,val);
-			}else{
-				printf("Digite o valor a ser inserido:"); // da segunda inserção adiante, onde será definido o ponteiro para a  próxima e posição anterior
-				scanf("%i",&val);
-				insere(&lis,val);
-			}
+			printf("Digite o valor a ser inserido:");
+			scanf("%i",&val);
+			insere(&lis,val);		
 		}
 		
 		if(op==2){
@@ -123,13 +113,13 @@ int main(){
 		
 		if(op==4){
 			lis = lis->pp; 
-			printf("Valor:%i\n",lis->valor); // Lista o proximo valor da lista
+			printf("Próximo valor:%i\n",lis->valor); // Lista o proximo valor da lista
 			system("pause");	
 		}
 		
 		if(op==5){
 			lis = lis->aa; 
-			printf("Valor:%i\n",lis->valor); // Lista o valor anterior da lista
+			printf("Valor anterior:%i\n",lis->valor); // Lista o valor anterior da lista
 			system("pause");
 		
 		}

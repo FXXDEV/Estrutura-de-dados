@@ -14,8 +14,9 @@ void exibir();
 
 int main(){
 	
-
-	int i=0,op=0,x=0;
+	int i=0;
+	int op;
+	int val;
 	
 	for	(;;){
 		system("cls");
@@ -25,10 +26,13 @@ int main(){
 	
 			
 		if(op==1)	{
-			printf("\nQual o valor deseja inserir:");
-			scanf("%i", &x);
-			push(x);
-	
+			if(ponto==MAX){
+				printf("Pilha cheia!\n");
+			}else{
+				printf("\nQual o valor deseja inserir:");
+				scanf("%i", &val);
+				push(val);	
+			}
 		
 		}
 		
@@ -51,36 +55,38 @@ int main(){
 
 
 int push(int valor){
-		if(ponto==MAX){
-			printf("Pilha cheia!");
-		}else{
-			pilha[ponto] = valor;
-			ponto ++;
-			printf("Valor inserido: %i\n",valor);
-			Sleep(1000);	
-		}	
+
+	pilha[ponto] = valor;
+	ponto ++;
+	printf("Valor inserido: %i\n",valor);
+	system("pause");
+			
 		
 }
 
 void pop(){
 	if(ponto <= 0){
 		printf("Pilha vazia!\n");
+		system("pause");
 	}else{
+		printf("\nValor removido: %i\n",pilha[ponto-1]);
 		ponto --;
-		printf("\nValor removido: %i\n",pilha[ponto]);
-		pilha [ponto] = NULL;
+		
+		system("pause");
 	}
-	Sleep(1000);	
+
 }
 
+
+
 void exibir(){
-	int j;
+	int i;
 	printf("Valores empilhados\n");
-	for(j=0;j<ponto;j++){
+	for(i=0;i<ponto;i++){
 		if (ponto == 0){
 			printf("Pilha vazia!");
 		}else{
-			printf("%i\n",pilha[j]);
+			printf("%i\n",pilha[i]);
 		}
 		
 	}

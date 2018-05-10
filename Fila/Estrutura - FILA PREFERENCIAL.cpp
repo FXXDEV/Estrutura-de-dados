@@ -26,7 +26,7 @@ struct pessoa idoso[MAX];
 
 void insert();
 void show();
-void remove(struct lista **list, int val);
+void remove();
 ///
 
 
@@ -114,7 +114,7 @@ void insert (){
        if(idade>=60){//pessoa com idade acima ou igual a de 60 anos
        	if(contI<MAX &&	entI==MAX){
 			entI=0;
-			printf("Numero inserido com sucesso cont<max&&ent==max");
+			printf("Numero inserido com sucesso");
 			strcpy(	idoso[entI].nome, nome);
 			idoso[entI].idade = idade;
 			entI++;
