@@ -14,23 +14,17 @@ typedef struct ar{
 	int valor;
 }b;
 
-/*b *bD;// direita da raiz
-b *bE;// esquerda da raiz
-b *raiz; //raiz*/
-
-
 void inicia(b ** null){//inicializar a lista, definindo valores nulos
 	*null= NULL;
 }
 
-
+b * bD; // direita da raiz
+b * raiz; // raiz
+b * bE; // esquerda da raiz
 
 
 int insere(b **bb,int val){
-	b * bD;
-	b * raiz;
-	b * bE;
-	
+
 	if(execG==0){//primeira execução e definição de RAIZ
 		ar * raiz = (ar *)malloc(sizeof(ar));
 		raiz->valor = val;
@@ -46,8 +40,7 @@ int insere(b **bb,int val){
 				bE->aa = bE;
 				bE->pp= bE;	
 				*bb = bE;
-				printf("\nValor %i inserido com sucesso a direita da raiz!\n\n",val);
-				system("pause");	
+				printf("\nValor %i inserido com sucesso a esquerda da raiz!\n\n",val);
 				execE++;
 			}else{
 				ar * bE = (ar *)malloc(sizeof(ar));
@@ -69,7 +62,6 @@ int insere(b **bb,int val){
 				bD->pp= bD;	
 				*bb = bD;
 				printf("\nValor %i inserido com sucesso a direita da raiz!\n\n",val);
-				system("pause");	
 				execD++;
 			}else{
 				ar * bD = (ar *)malloc(sizeof(ar));
@@ -114,9 +106,6 @@ int main(){
 	int op;
 	int val;
 	inicia(&bb);
-	/*inicia(&bD);
-	inicia(&bE);
-	inicia(&raiz);*/
 	printf("Estrutura de Dados - Árvore B\n");
 
 	for(;;){
@@ -125,7 +114,8 @@ int main(){
 		if(execG==0){
 			printf("Árvore vazia!\n");
 		}else{
-			printf("Valor atual:%i\n",val);
+			//printf("Raiz:%i\n",raiz->valor);
+			//printf("Valor atual:%i\n",bb->valor);
 		}
 		
 		if(op==1){
@@ -144,14 +134,20 @@ int main(){
 		}
 		
 		if(op==4){
-			
+			bE = bE->aa; 
+			printf("Valor anterior:%i\n",bE->valor); // Lista o valor anterior da lista
+			system("pause");
 		}
 		
 		if(op==5){
-			
+			bD = bD->pp; 
+			printf("Próximo valor:%i\n",bD->valor); // Lista o proximo valor da lista
+			system("pause");
 		}
 		if(op==6){
-			
+			bb = raiz; 
+			printf("Próximo valor:%i\n",raiz->valor); // Lista o proximo valor da lista
+			system("pause");
 		}
 		if(op==7){
 			exit(1);
