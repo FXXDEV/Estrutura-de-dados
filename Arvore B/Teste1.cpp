@@ -158,9 +158,6 @@ int main(){
 				printf("Árvore vazia");	
 			}else{
 				if((esqC==0) && (dirC ==0)){
-					//esq = bb->aa;
-					//nav = esq->valor;
-					//bb = esq;
 					bb = bb->aa;
 					nav = bb->valor;
 					esqC++;	
@@ -180,8 +177,8 @@ int main(){
 				printf("Árvore vazia");	
 			}else{
 				if((esqC==0) && (dirC ==0)){
-					dir = bb->aa;
-					nav = dir->valor;
+					bb = bb->pp;
+					nav = bb->valor;
 					bb = dir;
 					dirC++;	
 				}else{
@@ -199,7 +196,7 @@ int main(){
 			if(exec==0){
 				printf("Arvore vazia");
 			}else{
-				bb = bb->raiz; 
+				bb = raiz; 
 				nav = bb->valor;
 				printf("Valor acima:%i\n",nav); // Lista a raiz
 				system("pause");
