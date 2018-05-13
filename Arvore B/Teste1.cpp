@@ -134,12 +134,15 @@ int main(){
 						
 			if(exec==0){
 				insereRaiz(&bb,val);
+				nav = bb->valor;
 			}else{
 				bb = bb->raiz;
 				if(val>(bb->raiz->valor)){
 					insereDireita(&bb,val);
+					nav = bb->raiz->valor;
 				}else if(val<(bb->raiz->valor)){
 					insereEsquerda(&bb,val);
+					nav = bb->raiz->valor;
 				}else{
 					printf("\nO valor inserido deve ser diferente da raiz!\n\n");
 					system("pause");
