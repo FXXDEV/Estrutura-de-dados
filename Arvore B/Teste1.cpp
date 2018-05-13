@@ -26,6 +26,7 @@ int insereRaiz(b **bb,int val){
 	aux->aa = aux;
 	aux->pp= aux;
 	aux->raiz = aux;
+	aux->raiz->valor = val;
 	*bb=aux;
 	exec++;
 	printf("\nRaiz definida com sucesso!\n\n",val);	
@@ -35,19 +36,21 @@ int insereRaiz(b **bb,int val){
 	
 int insereEsquerda(b **bb,int val){
 	ar *aux = (ar *)malloc(sizeof(ar));
-	
+	b *temp = (*bb)->raiz;
 	if(execE==0){
 		aux->valor = val;
 		aux->aa = aux;
 		aux->pp = aux;
+		aux->raiz = temp;
 		(*bb)->aa = aux;
 		execE++;
 	}else{
 		aux->valor = val;
+		aux->raiz = aux;
 		aux->pp = (*bb)->aa->pp;
 		aux->aa = (*bb)->aa;
 		(*bb)->aa->pp = aux;
-		aux->pp->aa = aux;
+		aux->raiz = temp;
 		(*bb)->aa = aux;
 		execE++;
 	}
@@ -59,11 +62,12 @@ int insereEsquerda(b **bb,int val){
 
 int insereDireita(b **bb,int val){
 	ar *aux = (ar *)malloc(sizeof(ar));
-	
+	b *temp = (*bb)->raiz;
 	if(execD==0){
 		aux->valor = val;
 		aux->aa = aux;
 		aux->pp = aux;
+		aux->raiz = temp;
 		(*bb)->pp = aux;
 		execD++;
 	}else{
@@ -71,6 +75,7 @@ int insereDireita(b **bb,int val){
 		aux->pp = (*bb)->pp->pp;
 		aux->aa = (*bb)->pp;
 		(*bb)->pp->pp = aux;
+		aux->raiz = temp;
 		aux->pp->aa = aux;
 		(*bb)->pp = aux;
 		execD++;
@@ -115,7 +120,7 @@ int main(){
 		if(exec==0){
 			printf("Árvore vazia!\nOpção:");
 		}else{
-			printf("Raiz:%i\n",raiz->valor);
+			printf("Raiz:%i\n",bb->raiz->valor);
 			printf("Valor atual:%i\n",nav);
 			printf("Opção:");
 		}
@@ -123,14 +128,14 @@ int main(){
 		scanf("%i",&op);
 			
 		if(op==1){
+			
 			printf("Digite o valor a ser inserido:");
 			scanf("%i",&val);
 						
 			if(exec==0){
 				insereRaiz(&bb,val);
-				raiz = bb;
-				nav = raiz->valor;
 			}else{
+				bb = bb->raiz;
 				if(val>(bb->raiz->valor)){
 					insereDireita(&bb,val);
 				}else if(val<(bb->raiz->valor)){
@@ -140,9 +145,7 @@ int main(){
 					system("pause");
 					system("cls");
 				}
-			}
-		
-			
+			}	
 		}
 		
 		if(op==2){
@@ -179,7 +182,6 @@ int main(){
 				if((esqC==0) && (dirC ==0)){
 					bb = bb->pp;
 					nav = bb->valor;
-					bb = dir;
 					dirC++;	
 				}else{
 					bb = bb->pp;
@@ -196,7 +198,7 @@ int main(){
 			if(exec==0){
 				printf("Arvore vazia");
 			}else{
-				bb = raiz; 
+				bb = bb->raiz; 
 				nav = bb->valor;
 				printf("Valor acima:%i\n",nav); // Lista a raiz
 				system("pause");
