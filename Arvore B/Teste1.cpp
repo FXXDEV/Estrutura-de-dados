@@ -86,9 +86,39 @@ int insereDireita(b **bb,int val){
 	system("cls");
 }
 
-void remover(){
+void removeD(b **bb){
+	ar *r; //remocao
+	r = (*bb)->pp;
+	(*bb)->pp->aa = (*bb)->aa;
+	(*bb)->aa->pp = (*bb)->pp;
+	r = (*bb)->pp;
+	printf("Valor atual:%i\n",r->valor);
+	free(*bb);
+	*bb = r;	
+	system("pause");
+	system("cls");
+		
 	
 }
+
+void removeE(b **bb){
+		ar *r;
+		r = (*bb)->aa;
+		(*bb)->pp->aa = (*bb)->aa;
+		(*bb)->aa->pp = (*bb)->pp;
+		r = (*bb)->pp;
+		printf("Valor atual:%i\n",r->valor);
+		free(*bb);
+		*bb = r;
+		system("pause");
+		system("cls");
+	
+}
+
+void removeR(b **bb){
+	b *temp = (*bb)->raiz;
+}
+
 
 void listar(b **bb){
 	b *aux1 = (*bb)->aa;//aux anterior
@@ -121,9 +151,6 @@ int main(){
 	setlocale(LC_ALL,"Portuguese");
 	b *bb;
 	b *raiz;
-	b *esq; 
-	b *dir;
-	
 	int dirC=0;
 	int esqC=0;
 	int op=0;
@@ -153,6 +180,7 @@ int main(){
 						
 			if(exec==0){
 				insereRaiz(&bb,val);
+				raiz = bb;
 				nav = bb->valor;
 			}else{
 				bb = bb->raiz;
@@ -174,10 +202,41 @@ int main(){
 			if(exec==0){
 				printf("Árvore vazia");	
 			}else{
-			remover();
-			
+				if((bb)->valor > ((bb)->raiz->valor)){
+					if(execD==1){
+						free(bb);
+						raiz->pp = raiz;
+						bb=raiz;
+						
+						
+					}else{
+					removeD(&bb);
+					}
+					nav = raiz->valor;
+					execD--;
+				}else if((bb)->valor < ((bb)->raiz->valor)){
+					if(execE==1){
+						free(bb);
+						raiz->aa = raiz;
+						bb=raiz;
+						
+					}else{
+						removeE(&bb);
+					}
+					nav = raiz->valor;
+					execE--;
+					
+				}else if((bb)->valor == ((bb)->raiz->valor)){
+					printf("Isso aí da merda serjão\n");
+					
+					//removeR(&bb);
+				}
+				
+			}	
+			system("pause");
+			system("cls");
 			}
-		}
+		
 		
 		if(op==3){
 			if(exec==0){
@@ -228,20 +287,21 @@ int main(){
 		if(op==6){
 	
 			if(exec==0){
-				printf("Arvore vazia");
+				printf("Árvore vazia");
 			}else{
 				bb = bb->raiz; 
 				nav = bb->valor;
-				printf("Valor acima:%i\n",nav); // Lista a raiz
-				system("pause");
-				system("cls");
 				esqC = 0;
 				dirC = 0;
 			}
+			printf("Valor acima:%i\n",nav); // Lista a raiz
+			system("pause");
+			system("cls");
 			
 		}
 		if(op==7){
 			exit(1);
 		}
-	}
+		}
 }
+
