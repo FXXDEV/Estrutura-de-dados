@@ -140,7 +140,7 @@ void listar(b **bb){
 	
 
 	
-	printf("\nError 404, página não encontrada!\n");
+	printf("\nError 404, pÃ¡gina nÃ£o encontrada!\n");
 	system("pause");
 	system("cls");
 }
@@ -159,16 +159,16 @@ int main(){
 
 	inicia(&bb);
 	
-	printf("Estrutura de Dados - Árvore B\n");
+	printf("Estrutura de Dados - Ãrvore B\n");
 	
 	for(;;){
-		printf("\n1 - Inserir\n2 - Remover\n3 - Exibir\n4 - Anterior\n5 - Próximo\n6 - Cima\n7 - Sair\n\n");
+		printf("\n1 - Inserir\n2 - Remover\n3 - Exibir\n4 - Anterior\n5 - PrÃ³ximo\n6 - Cima\n7 - Sair\n\n");
 		if(exec==0){
-			printf("Árvore vazia!\nOpção:");
+			printf("Ãrvore vazia!\nOpÃ§Ã£o:");
 		}else{
 			printf("Raiz:%i\n",bb->raiz->valor);
 			printf("Valor atual:%i\n",nav);
-			printf("Opção:");
+			printf("OpÃ§Ã£o:");
 		}
 		
 		scanf("%i",&op);
@@ -200,7 +200,7 @@ int main(){
 		
 		if(op==2){
 			if(exec==0){
-				printf("Árvore vazia");	
+				printf("Ãrvore vazia");	
 			}else{
 				if((bb)->valor > ((bb)->raiz->valor)){
 					if(execD==1){
@@ -227,7 +227,7 @@ int main(){
 					execE--;
 					
 				}else if((bb)->valor == ((bb)->raiz->valor)){
-					printf("Isso aí da merda serjão\n");
+					printf("Isso aÃ­ da merda serjÃ£o\n");
 					
 					//removeR(&bb);
 				}
@@ -240,7 +240,7 @@ int main(){
 		
 		if(op==3){
 			if(exec==0){
-				printf("Árvore vazia");	
+				printf("Ãrvore vazia");	
 			}else{
 				listar(&bb);
 			}
@@ -249,7 +249,7 @@ int main(){
 		
 		if(op==4){
 			if(exec==0){
-				printf("Árvore vazia");	
+				printf("Ãrvore vazia");	
 			}else{
 				if((esqC==0) && (dirC ==0)){
 					bb = bb->aa;
@@ -268,7 +268,7 @@ int main(){
 		
 		if(op==5){
 			if(exec==0){
-				printf("Árvore vazia");	
+				printf("Ãrvore vazia");	
 			}else{
 				if((esqC==0) && (dirC ==0)){
 					bb = bb->pp;
@@ -278,7 +278,7 @@ int main(){
 					bb = bb->pp;
 					nav= bb->valor;
 				}
-				printf("Próximo valor:%i\n",nav); // Lista o proximo valor da lista
+				printf("PrÃ³ximo valor:%i\n",nav); // Lista o proximo valor da lista
 				system("pause");
 				system("cls");
 			}
@@ -287,7 +287,7 @@ int main(){
 		if(op==6){
 	
 			if(exec==0){
-				printf("Árvore vazia");
+				printf("Ãrvore vazia");
 			}else{
 				bb = bb->raiz; 
 				nav = bb->valor;
