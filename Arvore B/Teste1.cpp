@@ -90,7 +90,26 @@ void remover(){
 	
 }
 
-void listar(){
+void listar(b **bb){
+	b *aux1 = (*bb)->aa;//aux anterior
+	b *aux2 = (*bb)->pp;//aux proximo
+	
+	printf("         [%i]\n",(*bb)->raiz->valor);
+	
+	for(int i=0; i<execE;i++){
+		//aux1 = 
+		printf("[%i]",(aux1)->valor);
+		aux1 = aux1->aa;
+	}
+	printf("     |   ")	;
+	for(int j=0; j<execD;j++){
+		printf("[%i]",(aux2)->valor);
+		aux2 = aux2->pp;
+		
+	}
+	
+
+	
 	printf("\nError 404, página não encontrada!\n");
 	system("pause");
 	system("cls");
@@ -152,11 +171,21 @@ int main(){
 		}
 		
 		if(op==2){
+			if(exec==0){
+				printf("Árvore vazia");	
+			}else{
 			remover();
+			
+			}
 		}
 		
 		if(op==3){
-			listar();
+			if(exec==0){
+				printf("Árvore vazia");	
+			}else{
+				listar(&bb);
+			}
+			
 		}
 		
 		if(op==4){
