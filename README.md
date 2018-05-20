@@ -30,3 +30,16 @@
 * Pesquisar elemento
 
 ## Exemplo de Árvore B
+
+
+
+## Exemplo de Ordenação
+
+* Bubble Sort;
+* Quick Sort;
+
+### Funções básicas:
+* Inserir;
+* Ordenar;
+* Exibir;
+
