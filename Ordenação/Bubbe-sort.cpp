@@ -57,11 +57,6 @@ void exibir(){
    		 }
    		 fclose(f);
   		
- 
-    
-    
-    
-    
     printf("\n\n\n");
 	system("pause");
 	system("cls");

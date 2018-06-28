@@ -8,16 +8,133 @@ int execE=0;
 int execD=0;
 
 
-typedef struct ar{
+struct ar{
 	struct ar *pp;
 	struct ar *aa;
-	struct ar *raiz;
+	struct ar *anterior;
 	int valor;
-}b;
+};
+
+int valGeral;
 
 void inicia(b ** null){//inicializar a lista, definindo valores nulos
 	*null= NULL;
 }
+
+
+
+void inserir(struct ar **list){
+
+	struct ar *vet;
+	
+	if(*list == NULL){
+		
+	struct ar *aux;
+	printf("\n\nInsira o valor na lista\n");
+	scanf("%d",&valGeral);
+		if((aux =(struct ar * ) malloc(sizeof(struct ar))) == NULL)/
+		{
+			printf("\nErro no malloc");
+		}else{
+			
+			aux->valor = valGeral;
+			aux->pp=NULL;
+			aux->aa = NULL;
+			aux->anterior = NULL;
+			*list=aux;
+		}
+	}else{
+		struct ar *aux, *nav; 
+		
+	
+		printf("\n\nDigite o valor para se inserido apos o elemento\n");
+		scanf("%d",&valor);
+		
+		nav = *list;
+		
+		
+		if((aux = (struct ar * ) malloc(sizeof(struct ar))) == NULL){
+			printf("\nErro no malloc");
+		}
+		
+		else{
+			
+			aux->valor = valGeral; 
+			
+			if(nav->valor->aux->valor){
+				if(nav->aa==NULL){
+	
+						vet=nav;
+						aux->anterior=vet;
+						aux->aa=NULL;
+						aux->pp=NULL;
+						nav->aa=aux;
+						
+						
+				}else{
+					while(nav->valor<aux->valor){
+						nav=nav->aa;
+					}
+					nav=nav->aa;
+					if(nav->valor<aux->nav){
+						
+						vet=nav;
+						aux->cima=vt;
+						aux->aa=NULL;
+						aux->pp=NULL;
+						nav->pp=aux;
+						
+					}else{
+						vet=nav;
+						aux->anterior=vt;
+						aux->aa=NULL;
+						aux->pp=NULL;
+						nav->aa=p;
+						
+					}
+				}
+				
+			}else if(nav->valor<aux->valor){
+				//passagem até o ultimo valor que é maior
+				if(nav->pp==NULL){
+						vet=nav;
+						aux->anterior=vet;
+						aux->aa=NULL;
+						aux->pp=NULL;
+						nav->pp=aux;
+						
+						
+				}else{
+					while(pNavegar->numero<p->numero && pNavegar->direita!=NULL){
+						pNavegar=pNavegar->direita;
+					}
+					
+					if(pNavegar->numero<p->numero){
+						vt=pNavegar;
+						p->cima=vt;
+						p->esquerda=NULL;
+						p->direita=NULL;
+						pNavegar->direita=p;
+						
+					}else{
+						vt=pNavegar;
+						p->cima=vt;
+						p->esquerda=NULL;
+						p->direita=NULL;
+						pNavegar->esquerda=p;
+					}
+				}
+
+			
+			}
+			
+			
+			*lista=pNavegar;
+			
+		}
+	}
+}
+
 
 
 int insereRaiz(b **bb,int val){
