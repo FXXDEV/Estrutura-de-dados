@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <locale.h>
+#include <windows.h>
 #define MAX 5
 int vetor[MAX];
 
@@ -47,6 +48,19 @@ void exibir(){
     for (int i=0; i<MAX; i++){
         printf("\n Posição: %i | Número: %i",i+1,vetor[i]);
     }
+    
+    FILE *f;
+    f = fopen("Bubble.txt","w");
+
+	for (int j=0; j<MAX; j++){
+        	fprintf(f,"\n Posicao: %d | Numero: %d",j+1,vetor[j]);
+   		 }
+   		 fclose(f);
+  		
+ 
+    
+    
+    
     
     printf("\n\n\n");
 	system("pause");
